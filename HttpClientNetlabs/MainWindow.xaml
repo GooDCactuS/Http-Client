@@ -1,0 +1,26 @@
+﻿<Window x:Class="HttpClientNetlabs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="HttpClient" Height="450" Width="800">
+    <Grid Background="#FF009707">
+        <TextBox Name="tb_address" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" Margin="10,31,0,0" Text="test.volpi.edu.ru"/>
+        <TextBox Name="tb_port" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="69" Margin="212,31,0,0"/>
+        <TextBox Name="tb_path" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="270.714" Margin="10,92.238,0,0" Text="examples/testpage.htm"/>
+        <Label Content="IP-адрес" HorizontalAlignment="Left" VerticalAlignment="Top" Width="81.257" Margin="38.743,0,0,0"/>
+        <Label Content="Port" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="231,0,0,0"/>
+        <Label Content="Путь до файла" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="89.761,61.278,0,0"/>
+        <Button Content="Присоединиться" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="160.714,140.541,0,0" Click="ConnectClick"/>
+        <CheckBox Name="cb_https" Content="HTTPS" HorizontalAlignment="Left" Height="22.887" Margin="10.952,143.541,0,0" 
+                  VerticalAlignment="Top" Width="119.048"/>
+
+
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="398" Margin="320,12,0,0" VerticalAlignment="Top" Width="464" Background="White">
+            <TextBlock Name="tb_file" HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" Background="White"/>
+        </ScrollViewer>
+        <Button Content="Получить css-файлы" HorizontalAlignment="Left" VerticalAlignment="Top" Width="269.762" Margin="10.952,186.734,0,0" Click="GetClick"/>
+
+    </Grid>
+</Window>
