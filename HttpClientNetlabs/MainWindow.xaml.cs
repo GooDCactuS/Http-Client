@@ -32,6 +32,7 @@ namespace HttpClientNetlabs
         {
             client = new HttpClient(tb_address.Text, tb_port.Text, tb_path.Text, (bool)cb_https.IsChecked);
             List<string> list = client.Connect();
+            tb_file.Text = "";
             foreach (var item in list)
             {
                 tb_file.Text += "\n" + item;
@@ -40,19 +41,19 @@ namespace HttpClientNetlabs
 
         private void GetClick(object sender, RoutedEventArgs e)
         {
-            // Регулярное выражение для поиска css-файлов
-            Regex regex = new Regex(@"<link href=[""|'][^""']+[""|']  rel=""stylesheet"" type=""text/css"" />", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+            // Регулярное выражение для поиска img-файлов <img src="*.jpg" и <img src="*.gif"
+            Regex regex = new Regex(@"<IMG SRC=[""|'][^""']+[""|'] class=""c[0-9]"">", RegexOptions.Multiline | RegexOptions.IgnoreCase);
             MatchCollection matches = regex.Matches(tb_file.Text);
-            regex = new Regex(@"<link href=[\""|']", RegexOptions.IgnoreCase);
-            Regex regex2 = new Regex(@"[\""|']  rel=""stylesheet"" type=""text/css"" />", RegexOptions.IgnoreCase);
-
+            regex = new Regex(@"<IMG SRC=[\""|']", RegexOptions.IgnoreCase);
+            Regex regex2 = new Regex(@"[\""|']  class=""[0-9]"">", RegexOptions.IgnoreCase);
+            MessageBox.Show(matches[5].ToString());
             // Перенос информации из этих css-файлов в файлы на компьютере
             for (int ii = 0; ii < matches.Count; ii++)
             {
                 string path = matches[ii].Value;
                 path = regex.Replace(path, "");
                 path = regex2.Replace(path, "");
-                client.GetPageIntoFile(path, "file"+ii+".txt");
+                client.GetIMGIntoFile(path, "file"+ii+".txt");
             }
             
         }

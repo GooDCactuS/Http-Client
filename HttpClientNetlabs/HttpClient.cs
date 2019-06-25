@@ -67,12 +67,12 @@ namespace HttpClientNetlabs
             
         }
 
-        public void GetPageIntoFile(string path, string fileName)
+        public void GetIMGIntoFile(string path, string fileName)
         {
-            PutIntoFile(fileName, GetPage(path));
+            PutIntoFile(fileName, GetIMG(path));
         }
 
-        private string GetPage(string pagePath)
+        private string GetIMG(string pagePath)
         {
             // Папка, в которой лежит изначальный файл
             int index = this.path.LastIndexOf('/');
