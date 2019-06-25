@@ -32,6 +32,7 @@ namespace HttpClientNetlabs
         {
             client = new HttpClient(tb_address.Text, tb_port.Text, tb_path.Text, (bool)cb_https.IsChecked);
             List<string> list = client.Connect();
+            tb_file.Text = "";
             foreach (var item in list)
             {
                 tb_file.Text += "\n" + item;
